@@ -29,6 +29,10 @@ scaler = MinMaxScaler()
 scaler.fit(train_x)
 N_train_x = scaler.transform(train_x)
 
+import pickle
+with open('scaler.pkl', 'wb') as f:
+    pickle.dump(scaler, f)
+
 inputs = tf.keras.Input(10)
 hiden = tf.keras.layers.Dense(100)(inputs)
 output = tf.keras.layers.Dense(5, activation='softmax')(hiden)
